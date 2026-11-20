@@ -1,0 +1,17 @@
+// DBML: 07_Sorting Records.dbml
+// Database: ecommerce
+
+Table products {
+  id         serial [pk, increment]
+  name       varchar(100)
+  department varchar(50)
+  price      integer
+  weight     integer
+}
+
+Table phones {
+  name         varchar(100)
+  manufacturer varchar(100)
+  price        integer
+  units_sold   integer
+}
