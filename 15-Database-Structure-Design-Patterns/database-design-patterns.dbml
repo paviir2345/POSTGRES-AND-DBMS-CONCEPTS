@@ -1,0 +1,33 @@
+
+Table users {
+  id integer [pk, increment]
+  username varchar(50) [not null, unique]
+  email varchar(100) [not null, unique]
+}
+
+Table categories {
+  id integer [pk, increment]
+  category_name varchar(50) [not null, unique]
+}
+
+Table posts {
+  id integer [pk, increment]
+  user_id integer [not null]
+  category_id integer
+  title varchar(150) [not null]
+  body text
+  created_at timestamp
+}
+
+Table comments {
+  id integer [pk, increment]
+  post_id integer [not null]
+  user_id integer [not null]
+  comment_text text [not null]
+  created_at timestamp
+}
+
+Ref: posts.user_id > users.id
+Ref: posts.category_id > categories.id
+Ref: comments.post_id > posts.id
+Ref: comments.user_id > users.id
