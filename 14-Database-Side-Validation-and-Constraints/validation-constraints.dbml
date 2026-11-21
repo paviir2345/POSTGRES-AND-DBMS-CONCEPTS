@@ -1,0 +1,40 @@
+
+Table student_details {
+  student_id integer [not null]
+  student_name varchar(50) [not null]
+  email varchar(100)
+}
+
+Table courses {
+  course_id integer
+  course_name varchar(50) [not null]
+  status varchar(20) [default: 'Active']
+}
+
+Table users {
+  user_id integer
+  username varchar(50) [unique]
+  email varchar(100)
+}
+
+Table course_enrollments {
+  enrollment_id integer
+  student_id integer
+  course_id integer
+
+  indexes {
+    (student_id, course_id) [unique]
+  }
+}
+
+Table products {
+  product_id integer
+  product_name varchar(50)
+  price numeric(10,2)
+}
+
+Table discounts {
+  discount_id integer
+  original_price numeric(10,2)
+  discount_price numeric(10,2)
+}
