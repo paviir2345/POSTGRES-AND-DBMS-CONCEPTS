@@ -1,0 +1,14 @@
+
+id,name,department,price,weight
+1,Shirt,Clothes,45,1
+2,Pants,Clothes,65,2
+3,Hat,Clothes,15,1
+4,Hammer,Tools,20,4
+5,Drill,Tools,120,8
+6,Shovel,Tools,35,6
+7,Desk,Industrial,320,45
+8,Chair,Industrial,150,15
+9,Bacon,Grocery,12,1
+10,Coffee Maker,Grocery,85,5
+11,Toy Car,Toys,25,1
+12,Board Game,Toys,40,3
