@@ -1,0 +1,72 @@
+
+Table s20_users {
+  id integer [pk, increment]
+  username varchar(50) [not null, unique]
+}
+
+Table s20_posts {
+  id integer [pk, increment]
+  user_id integer [not null]
+  title varchar(100) [not null]
+  body text
+  created_at timestamp
+}
+
+Table s20_comments {
+  id integer [pk, increment]
+  post_id integer [not null]
+  user_id integer [not null]
+  comment_text text [not null]
+}
+
+Table s20_likes {
+  user_id integer
+  post_id integer
+
+  indexes {
+    (user_id, post_id) [pk]
+  }
+}
+
+Table s20_tags {
+  id integer [pk, increment]
+  post_id integer
+  tagged_user_id integer
+  tag_type varchar(20)
+}
+
+Table s20_hashtags {
+  id integer [pk, increment]
+  tag_name varchar(50) [not null, unique]
+}
+
+Table s20_hashtag_posts {
+  post_id integer
+  hashtag_id integer
+
+  indexes {
+    (post_id, hashtag_id) [pk]
+  }
+}
+
+Table s20_followers {
+  follower_id integer
+  following_id integer
+  created_at timestamp
+
+  indexes {
+    (follower_id, following_id) [pk]
+  }
+}
+
+Ref: s20_posts.user_id > s20_users.id
+Ref: s20_comments.post_id > s20_posts.id
+Ref: s20_comments.user_id > s20_users.id
+Ref: s20_likes.user_id > s20_users.id
+Ref: s20_likes.post_id > s20_posts.id
+Ref: s20_tags.post_id > s20_posts.id
+Ref: s20_tags.tagged_user_id > s20_users.id
+Ref: s20_hashtag_posts.post_id > s20_posts.id
+Ref: s20_hashtag_posts.hashtag_id > s20_hashtags.id
+Ref: s20_followers.follower_id > s20_users.id
+Ref: s20_followers.following_id > s20_users.id
