@@ -1,0 +1,47 @@
+
+Table s16_users {
+  id integer [pk, increment]
+  username varchar(50) [not null, unique]
+}
+
+Table s16_posts {
+  id integer [pk, increment]
+  user_id integer [not null]
+  title varchar(100) [not null]
+  content text
+}
+
+Table s16_comments {
+  id integer [pk, increment]
+  post_id integer
+  user_id integer
+  comment_text text [not null]
+}
+
+Table s16_post_likes {
+  user_id integer
+  post_id integer
+  created_at timestamp
+
+  indexes {
+    (user_id, post_id) [pk]
+  }
+}
+
+Table s16_comment_likes {
+  user_id integer
+  comment_id integer
+  created_at timestamp
+
+  indexes {
+    (user_id, comment_id) [pk]
+  }
+}
+
+Ref: s16_posts.user_id > s16_users.id
+Ref: s16_comments.post_id > s16_posts.id
+Ref: s16_comments.user_id > s16_users.id
+Ref: s16_post_likes.user_id > s16_users.id
+Ref: s16_post_likes.post_id > s16_posts.id
+Ref: s16_comment_likes.user_id > s16_users.id
+Ref: s16_comment_likes.comment_id > s16_comments.id
