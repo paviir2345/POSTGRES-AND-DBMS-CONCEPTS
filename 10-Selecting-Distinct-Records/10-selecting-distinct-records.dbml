@@ -1,0 +1,8 @@
+
+Table phones {
+  id integer [pk]
+  name varchar(100)
+  manufacturer varchar(100)
+  price integer
+  units_sold integer
+}
