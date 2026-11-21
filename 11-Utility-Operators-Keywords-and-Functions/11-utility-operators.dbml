@@ -1,0 +1,8 @@
+
+Table products {
+  id integer [pk, increment]
+  name varchar(100)
+  department varchar(50)
+  price integer
+  weight integer
+}
